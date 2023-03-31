@@ -3,8 +3,9 @@ set -x
 
 npm install -g @devcontainers/cli
 
+pip install poetry
 
-pip install -e .[dev,generate]
+poetry install --with dev,generate
 
 apt-get -y install qemu binfmt-support qemu-user-static
 
