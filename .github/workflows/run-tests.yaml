@@ -17,40 +17,31 @@ jobs:
     outputs:
       relevant_files: ${{ steps.filter.outputs.relevant_files }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        filters: |
-          relevant_files:
-            - 'minilayer/**'
-            - 'tests/**'
-            - '.github/workflows/run-tests.yaml'
+      - uses: actions/checkout@v3
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            relevant_files:
+              - 'minilayer/**'
+              - 'tests/**'
+              - '.github/workflows/run-tests.yaml'
 
   run-tests:
-    needs: [changes]  
+    needs: [changes]
     if: ${{ (needs.changes.outputs.relevant_files == 'true') || (github.event_name	== 'workflow_dispatch') }}
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {
-            subtest_dir: "tests/apt"
-          }
-          - {
-            subtest_dir: "tests/apt_get"
-          }
-          - {
-            subtest_dir: "tests/aptitude"
-          }
-          - {
-            subtest_dir: "tests/gh_release"
-          }
-
+          - { subtest_dir: "tests/apt" }
+          - { subtest_dir: "tests/apt_get" }
+          - { subtest_dir: "tests/aptitude" }
+          - { subtest_dir: "tests/gh_release" }
 
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v3
 
@@ -59,7 +50,7 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-    
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -73,7 +64,7 @@ jobs:
           python-version: "3.8"
       - name: "Install python dependencies"
         run: |
-          python -m pip install --upgrade pip 
+          python -m pip install --upgrade pip
           python -m pip install --upgrade build setuptools wheel  setuptools-scm
           pip install -r requirements.txt -r requirements-generate.txt -r requirements-dev.txt
       - name: "Test with pytest"

@@ -12,7 +12,6 @@
             "console": "integratedTerminal",
             "justMyCode": false
         },
-
         {
             "name": "debug --release-version",
             "type": "python",
@@ -22,8 +21,7 @@
             "justMyCode": false,
             "args": [
                 "--release-version",
-                
-            ] 
+            ]
         },
         {
             "name": "debug --help",
@@ -34,8 +32,7 @@
             "justMyCode": false,
             "args": [
                 "--help",
-                
-            ] 
+            ]
         },
         {
             "name": "debug --version",
@@ -46,8 +43,7 @@
             "justMyCode": false,
             "args": [
                 "--version",
-                
-            ] 
+            ]
         },
         {
             "name": "debug install feature",
@@ -62,7 +58,7 @@
                 "ghcr.io/devcontainers-contrib/features/bash-command:1.0.0",
                 "--option",
                 "command=\"pip3 install packaging==21.3\""
-            ] 
+            ]
         },
         {
             "name": "debug install apt-get",
@@ -75,7 +71,7 @@
                 "install",
                 "apt-get",
                 "wget",
-            ] 
+            ]
         },
         {
             "name": "debug install apt-get with ppa",
@@ -90,7 +86,7 @@
                 "wget",
                 "--ppa",
                 "ppa:deadsnakes/ppa",
-            ] 
+            ]
         },
         {
             "name": "debug install gh-release",
@@ -99,16 +95,15 @@
             "program": "${workspaceFolder}/minilayer/__main__.py",
             "console": "integratedTerminal",
             "justMyCode": false,
-            "sudo": true, 
+            "sudo": true,
             "args": [
                 "install",
                 "gh-release",
                 "cli/cli",
                 "gh",
                 "--force"
-            ] 
+            ]
         },
-
         {
             "name": "Debug Tests",
             "type": "python",

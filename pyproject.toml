@@ -30,7 +30,6 @@ packaging = "^23.0"
 [tool.poetry.group.generate.dependencies]
 easyfs = "0.0.3"
 
-
 [tool.poetry.group.dev.dependencies]
 bandit = "^1.7.5"
 
